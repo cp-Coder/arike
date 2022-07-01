@@ -24,7 +24,7 @@ jobs:
         env:
           HD_CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
           HD_DJANGO_ADMIN_URL: ${{ secrets.DJANGO_ADMIN_URL }}
-          HD_DJANGO_ALLOWED_HOSTS: "arike-clone.herokuapp.com"
+          HD_DJANGO_ALLOWED_HOSTS: "cpcoder-arike.herokuapp.com"
           HD_DJANGO_DEBUG: "False"
           HD_DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
           HD_DJANGO_SETTINGS_MODULE: "config.settings.production"
@@ -32,4 +32,5 @@ jobs:
           HD_MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
           HD_PYTHONSEED: "random"
           HD_REDIS_URL: ${{ secrets.REDIS_URL }}
+          HD_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           HD_WEB_CONCURRENCY: "4"
