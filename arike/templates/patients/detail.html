@@ -1,0 +1,138 @@
+{% extends "base/detail.html" %}
+{% load filters %}
+{% block title %}
+Patient Details
+{% endblock title %}
+{% block buttons %}
+<a href="{% url 'arike:delete-patient' data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Delete
+</a>
+<a href="{% url 'arike:update-patient' data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Update
+</a>
+{% endblock buttons %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div class="flex flex-row">
+    <div class="w-1/2">
+      <div id="div_id_full_name" class="mb-3"> <label for="id_full_name"
+          class="block text-gray-700 text-sm font-bold mb-2">Full name</label>
+        <input type="text" name="full_name" value="{{ data.full_name }}" maxlength="255"
+          class="textinput border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">
+      </div>
+    </div>
+    <div class="w-1/2 px-2 dateinput">
+      <div id="div_id_date_of_birth" class="mb-3"> <label for="id_date_of_birth"
+          class="block text-gray-700 text-sm font-bold mb-2">
+          Date of birth</label>
+        <span name="date_of_birth"
+          class="dateinput border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">
+          {{ data.date_of_birth|date:"D d M Y" }} </span>
+      </div>
+    </div>
+  </div>
+  <div id="div_id_address" class="mb-3"> <label for="id_address"
+      class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+    <textarea name="address" cols="40" rows="3"
+      class="textarea border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">{{ data.address }}</textarea>
+  </div>
+  <div id=" div_id_landmark" class="mb-3"> <label for="id_landmark" class="block text-gray-700 text-sm font-bold mb-2">
+      Landmark</label>
+    <textarea name="landmark" cols="40" rows="3"
+      class="textarea border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">{{ data.landmark }}</textarea>
+  </div>
+  <div class="flex flex-row">
+    <div class="w-1/3">
+      <div id="div_id_phone_number" class="mb-3"> <label for="id_phone_number"
+          class="block text-gray-700 text-sm font-bold mb-2">
+          Phone number</label>
+        <input type="text" name="phone_number" value="{{ data.phone_number }}" maxlength="14"
+          class="textinput border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">
+      </div>
+    </div>
+    <div class="w-1/3 px-2">
+      <div id="div_id_emergency_phone_number" class="mb-3"> <label for="id_emergency_phone_number"
+          class="block text-gray-700 text-sm font-bold mb-2">
+          Emergency phone phone_number</label>
+        <input type="text" name="emergency_phone_number" value="{{ data.emergency_phone_number }}" maxlength="14"
+          class="textinput border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">
+      </div>
+    </div>
+    <div class="w-1/3 px-2">
+      <div id="div_id_expired_time" class="mb-3">
+        <label for="id_expired_time" class="block text-gray-700 text-sm font-bold mb-2">
+          Expired time</label>
+        <span name="expired_time"
+          class="form-control timeinput border-gray-300 rounded-lg py-2 leading-normal appearance-none w-full px-4 border text-gray-700 bg-white focus:outline-none block">
+          {{ data.expired_time|time:"H:i" }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row">
+    <div class="w-1/3">
+      <div id="div_id_ward" class="mb-3">
+        <label for="id_ward" class="block text-gray-700 text-sm font-bold mb-2">Ward
+        </label>
+        <div class="mb-3">
+          <div class="relative">
+            <span
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="ward">{{ data.ward }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/3 px-2 disabled">
+      <div id="div_id_facility" class="mb-3"> <label for="id_facility"
+          class="block text-gray-700 text-sm font-bold mb-2">
+          Facility
+        </label>
+        <div class="mb-3">
+          <div class="relative">
+            <span
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="facility">
+              {{ data.facility }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/3 px-2">
+      <div id="div_id_gender" class="mb-3"> <label for="id_gender" class="block text-gray-700 text-sm font-bold mb-2">
+          Gender</label>
+        <div class="mb-3">
+          <div class="relative">
+            <span
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="gender">
+              {{ data.gender|get_gender }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>
+<div class="flex flex-row gap-4 mt-10">
+  <a href="{% url 'arike:view-family' data.id %}"
+    class="w-1/2 px-6 py-3 text-lg font-bold text-center text-black transition-all duration-150 ease-linear rounded-lg shadow border-2 border-black bg-gray-300 hover:shadow-lg focus:outline-none">
+    Family Details
+  </a>
+  <a href="{% url 'arike:view-disease' data.id %}"
+    class="w-1/2 px-6 py-3 text-lg font-bold text-center text-black transition-all duration-150 ease-linear rounded-lg shadow border-2 border-black bg-gray-300 hover:shadow-lg focus:outline-none">
+    Disease History
+  </a>
+  <a href="{% url 'arike:view-treatment' data.id %}"
+    class="w-1/2 px-6 py-3 text-lg font-bold text-center text-black transition-all duration-150 ease-linear rounded-lg shadow border-2 border-black bg-gray-300 hover:shadow-lg focus:outline-none">
+    Treatment
+  </a>
+  <a href="{% url 'arike:history-view' data.id %}"
+    class="w-1/2 px-6 py-3 text-lg font-bold text-center text-black transition-all duration-150 ease-linear rounded-lg shadow border-2 border-black bg-gray-300 hover:shadow-lg focus:outline-none">
+    Visits
+  </a>
+</div>
+{% endblock extra %}

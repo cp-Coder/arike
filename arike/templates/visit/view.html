@@ -1,0 +1,24 @@
+{% extends "base/view.html" %}
+{% load filters %}
+{% block title %}
+Schedules
+{% endblock title %}
+{% block button %}
+<a href="{% url 'arike:add-visit' %}"
+  class="w-1/4 text-center px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Add
+</a>
+{% endblock button %}
+{% block card %}
+<a href="{% url 'arike:detail-visit' i.id %}">
+  <div class="flex flex-row ml-10 px-10 my=3">
+    <h4 class="truncate font-bold mr-10 md:mt-4 text-2xl text-gray-800 tracking-normal">
+      {{ i.full_name }}
+    </h4>
+  </div>
+  </div>
+  <!-- <ul class="truncate text-md ml-10 text-gray-500 list-disc list-inside">
+    <li>{{ i.care_type }}</li>
+  </ul> -->
+</a>
+{% endblock card %}

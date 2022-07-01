@@ -1,0 +1,35 @@
+{% extends "base/detail.html" %}
+{% block title %}
+Schedule Details
+{% endblock title %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div id="div_id_time" class="mb-3">
+    <label for="id_time" class="block text-gray-700 text-sm font-bold mb-2">
+      Time</label>
+    <span name="time"
+      class="form-control datetimeinput text-gray-700 px-4 block leading-normal w-full bg-white border border-gray-300 appearance-none py-2 rounded-lg focus:outline-none">
+      {{ data.time}} </span>
+  </div>
+  <div id="div_id_duration" class="mb-3">
+    <label for="id_duration" class="block text-gray-700 text-sm font-bold mb-2">
+      Duration</label>
+    <input type="text" name="duration" value="{{ data.duration }}" maxlength="5"
+      class="textinput text-gray-700 px-4 block leading-normal w-full bg-white border border-gray-300 appearance-none py-2 rounded-lg focus:outline-none">
+  </div>
+  <div id="div_id_patient" class="mb-3">
+    <label for="id_patient" class="block text-gray-700 text-sm font-bold mb-2">
+      Patient
+    </label>
+    <div class="mb-3">
+      <div class="relative">
+        <span
+          class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+          name="patient">
+          {{ data.patient }}
+        </span>
+      </div>
+    </div>
+  </div>
+</fieldset>
+{% endblock extra %}

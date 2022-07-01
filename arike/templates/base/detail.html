@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="flex flex-col mx-56 justify-center">
+  <div class="flex flex-row mx-20 mb-10 w-full space-x-14 justify-between align-middle">
+    <h1 class="text-4xl font-bold">{% block title %}{% endblock title %}</h1>
+    <div class="flex flex-row space-x-5">
+      {% block buttons %}
+      {% endblock buttons %}
+    </div>
+  </div>
+  {% block extra %}
+  {% endblock extra %}
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "base/detail.html" %}
+{% load filters %}
+{% block title %}
+Treatment Detail
+{% endblock title %}
+{% block buttons %}
+<a href="{% url 'arike:delete-treatment' pk1=pk1 pk=data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Delete
+</a>
+<a href="{% url 'arike:update-treatment' pk1=pk1 pk=data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Update
+</a>
+{% endblock buttons %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div id="div_id_care_sub_type" class="mb-3">
+    <label for="id_care_sub_type" class="block text-gray-700 text-sm font-bold mb-2">
+      Care sub type</label>
+    <div class="mb-3">
+      <div class="relative">
+        <span
+          class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+          name="care_sub_type"> {{ data.care_sub_type|care_sub_type }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div id="div_id_description" class="mb-3">
+    <label for="id_description" class="block text-gray-700 text-sm font-bold mb-2">
+      Description</label>
+    <textarea name="description" cols="40" rows="10"
+      class="textarea border leading-normal appearance-none w-full block text-gray-700 py-2 bg-white border-gray-300 rounded-lg focus:outline-none">
+      {{ data.description }} </textarea>
+  </div>
+</fieldset>
+{% endblock extra %}

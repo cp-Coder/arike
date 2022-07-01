@@ -1,0 +1,120 @@
+{% extends "base/detail.html" %}
+{% load filters %}
+{% block title %}
+Visit Detail
+{% endblock title %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div class="flex flex-row">
+    <div class="w-1/2">
+      <div id="div_id_palliative_phase" class="mb-3">
+        <label for="id_palliative_phase" class="block text-gray-700 text-sm font-bold mb-2">
+          Palliative phase</label>
+        <div class="mb-3">
+          <div class="relative">
+            <span
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="palliative_phase">
+              {{ data.palliative_phase }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/2 px-2">
+      <div id="div_id_blood_pressure" class="mb-3">
+        <label for="id_blood_pressure" class="block text-gray-700 text-sm font-bold mb-2">
+          Blood pressure</label>
+        <input type="text" name="blood_pressure" value="{{ data.blood_pressure }}" maxlength="50"
+          class="textinput px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row">
+    <div class="w-1/3">
+      <div id="div_id_pulse" class="mb-3">
+        <label for="id_pulse" class="block text-gray-700 text-sm font-bold mb-2">
+          Pulse</label>
+        <input type="text" name="pulse" value="{{ data.pulse }}" maxlength="50"
+          class="textinput px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">
+      </div>
+    </div>
+    <div class="w-1/3 px-2">
+      <div id="div_id_general_random_blood_sugar" class="mb-3">
+        <label for="id_general_random_blood_sugar" class="block text-gray-700 text-sm font-bold mb-2">
+          General random blood sugar</label>
+        <input type="text" name="general_random_blood_sugar" value="{{ data.general_random_blood_sugar }}"
+          maxlength="50"
+          class="textinput px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">
+      </div>
+    </div>
+    <div class="w-1/6 px-2">
+      <div id="div_id_patient_at_peace" class="mb-3">
+        <label for="id_patient_at_peace" class="block text-gray-700 text-sm font-bold mb-2">
+          Patient at peace</label>
+        <input type="checkbox" name="patient_at_peace" {% if data.patient_at_peace %} checked {% endif %}
+          class="checkboxinput " id="id_patient_at_peace">
+      </div>
+    </div>
+    <div class="w-1/6 px-2">
+      <div id="div_id_pain" class="mb-3">
+        <label for="id_pain" class="block text-gray-700 text-sm font-bold mb-2">
+          Pain </label>
+        <input type="checkbox" name="pain" {% if data.pain %} checked {%endif %} class="checkboxinput" id="id_pain">
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row">
+    <div class="w-1/3">
+      <div id="div_id_personal_hygiene" class="mb-3">
+        <label for="id_personal_hygiene" class="block text-gray-700 text-sm font-bold mb-2">
+          Personal hygiene</label>
+        <textarea name="personal_hygiene" cols="40" rows="10"
+          class="textarea px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">
+        {{ data.personal_hygiene }} </textarea>
+      </div>
+    </div>
+    <div class="w-1/3 px-2">
+      <div id="div_id_mouth_hygiene" class="mb-3">
+        <label for="id_mouth_hygiene" class="block text-gray-700 text-sm font-bold mb-2">
+          Mouth hygiene</label>
+        <textarea name="mouth_hygiene" cols="40" rows="10"
+          class="textarea px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">{{ data.mouth_hygiene }}</textarea>
+      </div>
+    </div>
+    <div class="w-1/3 px-2">
+      <div id="div_id_pubic_hygiene" class="mb-3">
+        <label for="id_pubic_hygiene" class="block text-gray-700 text-sm font-bold mb-2">
+          Pubic hygiene</label>
+        <textarea name="pubic_hygiene" cols="40" rows="10"
+          class="textarea px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">{{ data.pubic_hygiene }}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row">
+    <div class="w-1/3">
+      <div id="div_id_systemic_examination" class="mb-3">
+        <label for="id_systemic_examination" class="block text-gray-700 text-sm font-bold mb-2">
+          Systemic examination</label>
+        <div class="mb-3">
+          <div class="relative">
+            <span
+              class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+              name="systemic_examination">
+              {{ data.systemic_examination|get_systemic_examination }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-2/3 px-2">
+      <div id="div_id_symptoms" class="mb-3">
+        <label for="id_symptoms" class="block text-gray-700 text-sm font-bold mb-2">
+          Symptoms</label>
+        <textarea name="symptoms" cols="40" rows="10"
+          class="textarea px-4 py-2 border-gray-300 text-gray-700 block focus:outline-none border w-full appearance-none bg-white leading-normal rounded-lg">{{ data.symptoms }}</textarea>
+      </div>
+    </div>
+  </div>
+</fieldset>
+{% endblock extra %}

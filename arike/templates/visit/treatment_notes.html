@@ -1,0 +1,27 @@
+{% extends "base/form1.html" %}
+{% block title %}
+Add notes
+<div class="ml-36 p-4 mt-10 w-1/2">
+  <div class="bg-gray-50 md:bg-white md:shadow-xl rounded-lg mb-6">
+    <div class="py-1">
+      <div class="p-4">
+        <div>
+          <div class="flex flex-col ml-4 px-10 my-3">
+            <h4 class="truncate font-bold mr-10 md:mt-4 text-2xl text-gray-800 tracking-normal">
+              {{ info }}
+            </h4>
+          </div>
+        </div>
+        <div class="ml-10 mt-4">
+          <p class="truncate text-lg font-normal text-gray-700 px-2 mr-1"><strong>Created:</strong> {{ dt.created_at }}
+          </p>
+          <p class="truncate text-lg font-normal text-gray-700 px-2 mr-1"><strong>Last updated:</strong>
+            {{ dt.updated_at }}</p>
+          <!-- <p class="truncate text-lg font-normal text-gray-700 px-2 mr-1"><strong>Description:</strong>
+            {{ dt.description }}</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock title %}

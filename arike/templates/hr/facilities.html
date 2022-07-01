@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for facility in facilities %}
+<option value="{{ facility.pk }}">{{ facility.name }}</option>
+{% endfor %}

@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="flex flex-col ml-40 mr-16 -mt-12 justify-center w-3/4">
+  <h1 class="text-4xl font-bold mb-8">{% block title %}{% endblock title %}</h1>
+  <form id="form" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button id="button" type="submit"
+      class="w-1/2 px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+      {% if form.instance.id %}
+      Update
+      {% else %}
+      Add
+      {% endif %}</button>
+  </form>
+</div>
+{% endblock content %}

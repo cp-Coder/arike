@@ -1,0 +1,40 @@
+{% extends "base/view.html" %}
+{% block title %}
+Disease History
+{% endblock title %}
+{% block button %}
+<a href="{% url 'arike:add-disease' pk1=dt.pk %}"
+  class="w-1/4 text-center px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Add
+</a>
+{% endblock button %}
+{% block patient %}
+<div class="ml-32 mt-20">
+  <h1 class="font-bold text-3xl">{{ dt.full_name }}</h1>
+  <span class="text-2xl">{{ dt.address }}</span>
+</div>
+{% endblock patient %}
+{% block card %}
+<a href="{% url 'arike:detail-disease' pk1=dt.pk pk=i.id %}">
+  <div class="flex flex-row ml-10 px-10 my=3">
+    <h4 class="truncate font-bold mr-10 md:mt-4 text-2xl text-gray-800 tracking-normal">
+      {{ i.disease }}
+    </h4>
+  </div>
+  </div>
+  <!-- <p class="truncate text-md text-gray-700 px-2 mr-1">{{ i.disease}}</p> -->
+  <p class="truncate text-md text-gray-700 px-2 mr-1">{{ i.created_at }}</p>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Remark:</strong> {{ i.note }}</p>
+</a>
+{% endblock card %}
+{% block card_button %}
+<a href="{% url 'arike:update-disease' pk1=dt.pk pk=i.id %}"
+  class="bg-white border-2 border-black hover:bg-black text-black text-lg font-semibold hover:text-white rounded-full px-10 py-2">
+  Edit </a>
+<a href="{% url 'arike:delete-disease' pk1=dt.pk pk=i.id %}"
+  class="bg-black hover:bg-white hover:border-2 hover:border-black text-lg font-semibold text-white hover:text-black rounded-full px-8 py-2">
+  Delete </a>
+</a>
+{% endblock card_button %}
+{% block href %}
+{% endblock href %}

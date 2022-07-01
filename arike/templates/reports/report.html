@@ -1,0 +1,24 @@
+{% load filters %}
+Hello, there has been updates in Patient treatment:
+{% for dt in data.patients_treatment_summary %}
+<h3>Patient Treatment Details</h3>
+{% for info in dt.treatment-summary %}
+<strong>Care type: </strong>{{ info.care_sub_type|care_sub_type }}
+<strong>Description: </strong>{{ info.description }}
+{% endfor %}
+<h3>Patient Health Information</h3>
+{% for info in dt.health-info %}
+<strong>Palliative Phase:</strong>{{info.palliative_phase}}
+<strong>Blood Pressure:</strong>{{info.blood_pressure}}
+<strong>Pulse:</strong>{{info.pulse}}
+<strong>General Random Blood Sugar:</strong>{{info.general_random_blood_sugar}}
+<strong>Personal hygiene:</strong>{{info.personal_hygiene}}
+<strong>Mouth hygiene:</strong>{{info.mouth_hygiene}}
+<strong>Pubic hygiene:</strong>{{info.pubic_hygiene}}
+<strong>Systemic Examination:</strong>{{info.systemic_examination|get_systemic_examination}}
+<strong>Patient at peace:</strong>{{info.patient_at_peace}}
+<strong>Pain:</strong>{{info.pain}}
+<strong>Symptoms:</strong>{{info.symptoms}}
+<strong>Notes:</strong>{{info.notes}}
+{% endfor %}
+{% endfor %}

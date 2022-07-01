@@ -1,0 +1,57 @@
+{% extends "base/view.html" %}
+{% load filters %}
+{% block content %}
+<div class="flex flex-col -mt-10 justify-center">
+  <div class="flex flex-row ml-60 mr-16 w-full space-x-14 w-1/2 justify-between align-middle">
+    <h1 class="text-4xl font-bold">Treatment</h1>
+  </div>
+
+  <div class="ml-36 p-4 mt-10 w-1/2">
+    <div class="bg-gray-50 md:bg-white md:shadow-xl rounded-lg mb-6">
+      <div class="py-1">
+        <div class="p-4">
+          <div>
+            <div class="flex flex-col ml-4 px-10 my-3">
+              <h4 class="truncate font-bold mr-10 md:mt-4 text-2xl text-gray-800 tracking-normal">
+                {{ info }}
+              </h4>
+            </div>
+          </div>
+          <div class="ml-10 mt-4">
+            <p class="truncate text-lg text-gray-700 px-2 mr-1"><strong>Created:</strong> {{ dt.created_at }}</p>
+            <p class="truncate text-lg text-gray-700 px-2 mr-1"><strong>Last updated:</strong> {{ dt.updated_at }}</p>
+            <p class="truncate text-lg text-gray-700 px-2 mr-1"><strong>Description:</strong> {{ dt.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row ml-60 mt-10 mr-16 w-full space-x-14 w-1/2 justify-between align-middle">
+    <h1 class="text-4xl font-bold">Notes</h1>
+    <a href="{% url 'arike:add-notes' pk1=pk1 %}"
+      class="w-1/4 text-center px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+      Add
+    </a>
+  </div>
+  <div class="flex flex-col gap-4 xl:mx-24 mt-10">
+    {% for i in data %}
+    <div class="p-4 w-3/4">
+      <div class="bg-gray-50 md:bg-white md:shadow-xl rounded-lg mb-6">
+        <div class="py-1">
+          <div class="p-4">
+            <div class="mt-4 flex flex-col flex-wrap">
+              <div class="truncate text-md text-gray-700 px-2 mr-1"><strong>Created at:</strong>
+                {{ i.created_at }}</div>
+              <div class="truncate text-md text-gray-700 px-2 mr-1"><strong>Updated at:</strong>
+                {{ i.updated_at }}</div>
+              <div class="break-words w-full text-md text-gray-700 px-2 mr-1"><strong>Notes:</strong>
+                {{ i.notes }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

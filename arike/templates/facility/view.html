@@ -1,0 +1,38 @@
+{% extends "base/view2.html" %}
+{% load filters %}
+{% block title %}
+Facility
+{% endblock title %}
+{% block button %}
+<a href="{% url 'arike:add-facility' %}"
+  class="w-1/4 text-center px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Add
+</a>
+{% endblock button %}
+{% block card %}
+<a href="{% url 'arike:detail-facility' i.id %}">
+  <div class="flex flex-row mb-4 w-full text-center">
+    <span class="float-left truncate w-1/2 font-bold md:mt-4 text-xl text-gray-800 tracking-normal">
+      {{ i.name }}
+    </span>
+    <span class="flaot-right bg-gray-200 text-md font-semibold rounded-full px-6 mt-4 ">
+      {{ i.kind|facility_type }}</span>
+  </div>
+  </div>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Address:</strong> {{ i.address}}</p>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Pin Code:</strong> {{ i.pincode }}</p>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Ward:</strong> {{ i.ward }}</p>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Phone:</strong> {{ i.phone }}</p>
+</a>
+{% endblock card %}
+{% block card_button %}
+<a href="{% url 'arike:update-facility' i.id %}"
+  class="bg-white border-2 border-black hover:bg-black text-black text-lg font-semibold hover:text-white rounded-full px-10 py-2">
+  Edit </a>
+<a href="{% url 'arike:delete-facility' i.id %}"
+  class="bg-black hover:bg-white hover:border-2 hover:border-black text-lg font-semibold text-white hover:text-black rounded-full px-8 py-2">
+  Delete </a>
+</a>
+{% endblock card_button %}
+{% block href %}
+{% endblock href %}

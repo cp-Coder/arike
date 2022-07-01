@@ -1,0 +1,35 @@
+name: Django Deploy
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - "docs/**"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: "Checkout the repo"
+        uses: actions/checkout@v3
+      - name: "Deploy to Heroku"
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          buildpack: https://github.com/heroku/heroku-buildpack-python.git
+          stack: "heroku-22"
+        env:
+          HD_CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
+          HD_DJANGO_ADMIN_URL: ${{ secrets.DJANGO_ADMIN_URL }}
+          HD_DJANGO_ALLOWED_HOSTS: "arike-clone.herokuapp.com"
+          HD_DJANGO_DEBUG: "False"
+          HD_DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          HD_DJANGO_SETTINGS_MODULE: "config.settings.production"
+          HD_MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          HD_MAILGUN_DOMAIN: ${{ secrets.MAILGUN_DOMAIN }}
+          HD_PYTHONSEED: "random"
+          HD_REDIS_URL: ${{ secrets.REDIS_URL }}
+          HD_WEB_CONCURRENCY: "4"

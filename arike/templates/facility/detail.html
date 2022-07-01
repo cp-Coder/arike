@@ -1,0 +1,61 @@
+{% extends "base/detail.html" %}
+{% load filters %}
+{% block title %}
+{{ data.name }}
+{% endblock title %}
+{% block buttons %}
+<a href="{% url 'arike:delete-facility' data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Delete
+</a>
+<a href="{% url 'arike:update-facility' data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Update
+</a>
+{% endblock buttons %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div id="div_id_name" class="mb-3">
+    <label for="id_name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+    <input type="text" name="name" value="{{ data.name }}" maxlength="255"
+      class="textinput focus:outline-none px-4 rounded-lg text-gray-700 w-full leading-normal appearance-none border-gray-300 py-2 block border bg-white">
+  </div>
+  <div id="div_id_address" class="mb-3">
+    <label for="id_address" class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+    <textarea name="address" cols="40" rows="5"
+      class="textarea resize-none focus:outline-none px-4 rounded-lg text-gray-700 w-full leading-normal appearance-none border-gray-300 py-2 block border bg-white">{{ data.address }} </textarea>
+  </div>
+  <div id="div_id_ward" class="mb-3">
+    <label for="id_ward" class="block text-gray-700 text-sm font-bold mb-2">Ward</label>
+    <div class="mb-3">
+      <div class="relative">
+        <span
+          class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+          name="ward">{{ data.ward }}</span>
+      </div>
+    </div>
+  </div>
+  <div id="div_id_phone" class="mb-3">
+    <label for="id_phone" class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+    <input type="text" name="phone" value="{{ data.phone }}" maxlength="14"
+      class="textinput focus:outline-none px-4 rounded-lg text-gray-700 w-full leading-normal appearance-none border-gray-300 py-2 block border bg-white">
+  </div>
+  <div id="div_id_pincode" class="mb-3">
+    <label for="id_pincode" class="block text-gray-700 text-sm font-bold mb-2">Pincode</label>
+    <input type="number" name="pincode" value="{{ data.pincode }}" min="0"
+      class="numberinput focus:outline-none px-4 rounded-lg text-gray-700 w-full leading-normal appearance-none border-gray-300 py-2 block border bg-white">
+  </div>
+  <div id="div_id_kind" class="mb-3">
+    <label for="id_kind" class="block text-gray-700 text-sm font-bold mb-2">Kind</label>
+    <div class="mb-3">
+      <div class="relative">
+        <span
+          class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+          name="kind">
+          {{ data.kind|facility_type }}
+        </span>
+      </div>
+    </div>
+  </div>
+</fieldset>
+{% endblock extra %}

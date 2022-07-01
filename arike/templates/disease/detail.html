@@ -1,0 +1,38 @@
+{% extends "base/detail.html" %}
+{% block title %}
+Disease
+{% endblock title %}
+{% block buttons %}
+<a href="{% url 'arike:delete-disease' pk1=pk1 pk=data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Delete
+</a>
+<a href="{% url 'arike:update-disease' pk1=pk1 pk=data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Update
+</a>
+{% endblock buttons %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div id="div_id_disease" class="mb-3">
+    <label for="id_disease" class="block text-gray-700 text-sm font-bold mb-2">
+      Disease</label>
+    <div class="mb-3">
+      <div class="relative">
+        <span
+          class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+          name="disease">
+          {{ data.disease }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div id="div_id_note" class="mb-3">
+    <label for="id_note" class="block text-gray-700 text-sm font-bold mb-2">
+      Note</label>
+    <textarea name="note" cols="40" rows="10"
+      class="textarea bg-white border appearance-none rounded-lg py-2 leading-normal text-gray-700 w-full border-gray-300 block focus:outline-none px-4"
+      required="" id="id_note">{{ data.note }}</textarea>
+  </div>
+  <fieldset>
+    {% endblock extra %}

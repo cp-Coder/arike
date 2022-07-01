@@ -1,0 +1,37 @@
+{% extends "base/view.html" %}
+{% load filters %}
+{% block title %}
+User
+{% endblock title %}
+{% block button %}
+<a href="{% url 'user:add-user' %}"
+  class="w-1/4 text-center px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Add
+</a>
+{% endblock button %}
+{% block card %}
+<a href="{% url 'user:detail-user' i.id %}">
+  <div class="flex flex-row ml-10">
+    <h4 class="truncate w-1/2 font-bold mr-10 md:mt-4 text-2xl text-gray-800 tracking-normal">
+      {{ i.full_name }}
+    </h4>
+    <span class="text-black bg-gray-200 text-md text-center font-semibold rounded-full px-12 my-3 mt-5">
+      {{ i.role|get_profession }}</span>
+  </div>
+  </div>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Email:</strong> {{ i.email}}</p>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Facility:</strong> {{ facility|get_name:i.id }}</p>
+  <p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Phone:</strong> {{ i.phone }}</p>
+</a>
+{% endblock card %}
+{% block card_button %}
+<a href="{% url 'user:update-user' i.id %}"
+  class="bg-white border-2 border-black hover:bg-black text-black text-lg font-semibold hover:text-white rounded-full px-10 py-2">
+  Edit </a>
+<a href="{% url 'user:delete-user' i.id %}"
+  class="bg-black hover:bg-white hover:border-2 hover:border-black text-lg font-semibold text-white hover:text-black rounded-full px-8 py-2">
+  Delete </a>
+</a>
+{% endblock card_button %}
+{% block href %}
+{% endblock href %}

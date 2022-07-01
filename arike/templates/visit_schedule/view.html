@@ -1,0 +1,26 @@
+{% extends "base/view.html" %}
+{% block title %}
+Visit History
+{% endblock title %}
+{% block patient %}
+<div class="ml-32 mt-20">
+  <h1 class="font-bold text-3xl">{{ dt.full_name }}</h1>
+  <span class="text-2xl">{{ dt.address }}</span>
+</div>
+{% endblock patient %}
+{% block card %}
+<!-- <div class="flex flex-row ml-10 px-10 my=3">
+    <h4 class="truncate font-bold mr-10 md:mt-4 text-2xl text-gray-800 tracking-normal">
+      {{ i.full_name }}
+    </h4>
+    <span class="text-white bg-gray-200 text-lg font-semibold rounded-full px-10 my-3 mt-5">{{ i.relation }}</span>
+  </div> -->
+</div>
+<p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Created at:</strong> {{ i.created_at }}</p>
+<p class="truncate text-md text-gray-700 px-2 mr-1"><strong>Updated at:</strong> {{ i.updated_at }}</p>
+{% endblock card %}
+{% block card_button %}
+<a href="{% url 'arike:history-detail' pk1=dt.pk pk=i.id %}"
+  class="bg-white border-2 border-black hover:bg-black text-black text-lg font-semibold hover:text-white rounded-full px-10 py-2">
+  Details </a>
+{% endblock card_button %}

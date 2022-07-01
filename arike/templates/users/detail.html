@@ -1,0 +1,56 @@
+{% extends "base/detail.html" %}
+{% load filters %}
+{% block title %}
+{{ data.full_name }}
+{% endblock title %}
+{% block buttons %}
+<a href="{% url 'user:delete-user' data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Delete
+</a>
+<a href="{% url 'user:update-user' data.id %}"
+  class="w-1/2 px-6 py-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-black hover:shadow-lg focus:outline-none">
+  Update
+</a>
+{% endblock buttons %}
+{% block extra %}
+<fieldset disabled="disabled">
+  <div id="div_id_full_name" class="mb-3">
+    <label for="id_full_name" class="block text-gray-700 text-sm font-bold mb-2">Full name</label>
+    <input type="text" name="full_name" value="{{ data.full_name }}" maxlength="150"
+      class="textinput block w-full text-gray-700 py-2 rounded-lg border-gray-300 leading-normal px-4 bg-white appearance-none focus:outline-none border">
+  </div>
+  <div id="div_id_email" class="mb-3">
+    <label for="id_email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+    <input type="email" name="email" value="{{ data.email }}" maxlength="60"
+      class="emailinput block w-full text-gray-700 py-2 rounded-lg border-gray-300 leading-normal px-4 bg-white appearance-none focus:outline-none border">
+  </div>
+  <div id="div_id_role" class="mb-3">
+    <label for="id_role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
+    <div class="mb-3">
+      <div class="relative">
+        <span
+          class="bg-white focus:outline-none border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-gray-700"
+          name="role">
+          {{ data.role|get_profession }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div id="div_id_phone" class="mb-3">
+    <label for="id_phone" class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+    <input type="text" name="phone" value="{{ data.phone }}" maxlength="14"
+      class="textinput block w-full text-gray-700 py-2 rounded-lg border-gray-300 leading-normal px-4 bg-white appearance-none focus:outline-none border">
+  </div>
+</fieldset>
+<div class=" flex flex-row gap-4 mt-10">
+  <a href="{% url 'user:assign-facility' data.id %}"
+    class="w-1/2 px-6 py-3 text-lg font-bold text-center text-black transition-all duration-150 ease-linear rounded-lg shadow border-2 border-black bg-gray-300 hover:shadow-lg focus:outline-none">
+    Assign Facility
+  </a>
+  <a href="{% url 'user:change-facility' data.id %}"
+    class="w-1/2 px-6 py-3 text-lg font-bold text-center text-black transition-all duration-150 ease-linear rounded-lg shadow border-2 border-black bg-gray-300 hover:shadow-lg focus:outline-none">
+    Update Facility
+  </a>
+</div>
+{% endblock extra %}
